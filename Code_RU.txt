@@ -1,0 +1,34 @@
+﻿Sub EasyVal()
+Dim c As Range
+
+For Each c In ActiveCell
+    If IsEmpty(c.FormulaLocal) Then
+    End
+	
+    Else
+    
+        c.FormulaLocal = Replace(c.FormulaLocal, "+", "&""+""&")
+        c.FormulaLocal = Replace(c.FormulaLocal, "-", "&""-""&")
+        c.FormulaLocal = Replace(c.FormulaLocal, "/", "&""/""&")
+        c.FormulaLocal = Replace(c.FormulaLocal, "*", "&""*""&")
+        c.FormulaLocal = Replace(c.FormulaLocal, "КОРЕНЬ", "Ч(""КОРЕНЬ"")&")
+        c.FormulaLocal = Replace(c.FormulaLocal, "СТЕПЕНЬ", "СУММ")
+        c.FormulaLocal = Replace(c.FormulaLocal, ";2", ";Ч(""СТЕПЕНЬ"")")
+        c.FormulaLocal = Replace(c.FormulaLocal, "КОРЕНЬ(3)", "Ч(""КОРЕНЬтри"")")
+                        
+        MsgBox (ActiveCell)
+        c.FormulaLocal = Replace(c.FormulaLocal, "&""+""&", "+")
+        c.FormulaLocal = Replace(c.FormulaLocal, "&""-""&", "-")
+        c.FormulaLocal = Replace(c.FormulaLocal, "&""/""&", "/")
+        c.FormulaLocal = Replace(c.FormulaLocal, "&""*""&", "*")
+        c.FormulaLocal = Replace(c.FormulaLocal, "Ч(""КОРЕНЬ"")&", "КОРЕНЬ")
+        c.FormulaLocal = Replace(c.FormulaLocal, "СУММ", "СТЕПЕНЬ")
+        c.FormulaLocal = Replace(c.FormulaLocal, ";Ч(""СТЕПЕНЬ"")", ";2")
+        c.FormulaLocal = Replace(c.FormulaLocal, "Ч(""КОРЕНЬтри"")", "КОРЕНЬ(3)")
+        
+               
+    End If
+Next
+End Sub
+
+
